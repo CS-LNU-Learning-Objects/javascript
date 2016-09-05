@@ -1,0 +1,47 @@
+
+## Lecture 1
+- Javascript
+  - Breif history
+  - ...
+- Syntax
+  - Datatypes loosly typed
+    - Number
+    - String
+     - Template literals, ES6
+    - Boolean
+  - Expressions, statements and programs 11
+  - Variables + Namingconventions 12 13
+    - var vs. let
+    - Värdetyper vs. referenstyper. TODO
+  - Control structures
+    - Selections 3 - 10
+    - Iterations 11 - 16
+  - Comments
+  - Functions
+    - Nested scopes
+      - Closure
+    - Pure functions / side effects
+    - Higher order functions
+    - Arrow functions
+
+## Lecture 2
+  - Undantagshantering
+  - Data structures
+    - Arrays
+      - Iteratorfunktioner
+      - Rest parameters
+      - Spread operator
+    - Object
+      - literals
+      - new
+      - this
+      - Getting values ( . vs [])
+      - Factories
+  - JSON
+  - Prototypes, constructor
+  - constructor/prototype pattern
+  - Private/public
+  - Classes
+  - Prototyparv
+  - Reguljära uttryck
+  - Modules

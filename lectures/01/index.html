@@ -1,0 +1,671 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Lecture - JavaScript</title>
+    <meta charset="utf-8">
+    <link rel="icon" href="../remark/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="../remark/stylesheets/lnu.dark.css" id="theme">
+    <link rel="stylesheet" href="../reveal.js/css/theme/black.lnu.css">
+</head>
+<body class="lnu">
+<textarea id="source">
+
+        class: center, middle, lnu-background-yellow
+
+        ### Introduction to Web programming (1DV525)
+        # Lecture
+
+        <div class="lnu-footer">
+            <img src="../remark/images/lnu-logotype.png">
+            <img src="../remark/images/lnu-symbol.png">
+        </div>
+
+        ---
+
+        class: lnu-background-cc
+
+        ### Upphovsrätt för detta verk
+
+        Detta verk är framtaget av Mats Loock i anslutning till kursen Grundläggande programmering (1DV021) vid Linnéuniversitetet.
+
+        Allt innehåll i detta verk förutom fotografier, ikoner, bild på kurslitteraturen samt Linnéuniversitetets logotyp och symbol,
+        är licensierad under en <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+            <img alt="Creative Commons-licens" style="border-width:0;vertical-align:middle" src="https://i.creativecommons.org/l/by/4.0/80x15.png" />
+            Creative Commons Erkännande 4.0 Internationell Licens
+        </a>.
+        #### Du får använda detta verk så här
+        - kopiera hela eller delar av innehållet
+        - sprida hela eller delar av innehållet
+        - visa hela eller delar av innehållet offentligt och digitalt
+        - konvertera innehållet till annat format
+        - du får även göra om innehållet
+
+        Om du förändrar innehållet så ta inte med fotografier, ikoner, bild på kurslitteraturen samt Linnéuniversitetets logotyp och symbol i din nya version!
+
+        Vid all användning måste du ange källan: ”Linnéuniversitetet – Grundläggande programmering (1DV021)” och
+        en länk till https://coursepress.lnu.se/kurs/grundlaggande-programmering och till Creative Common-licensen här ovan.
+
+        ---
+
+        # JavaScript
+
+
+        ---
+
+        # History
+
+        - Varför?
+            - Innan mitten av 1990-talet kunde webbformulär bara valideras på servern vilket tog tid (~30 s) då 28.8 kbps modem användes.
+            - Ett skriptspråk, inbäddat i webbläsare, behövdes för snabbare(!) och enklare(?) validering av data.
+        - När?
+            - 1995 - JavaScript 1.0 med Netscape Navigator 2.
+            - 1997 - JavaScript 1.1 standardiseras till ECMAScript 1.
+                - Bekriver syntax, typer, satser, nyckelord, reserverade ord, operatorer och objekt.
+            - 1998 - ECMAScript 2.
+            - 1999 - ECMAScript 3.
+            - 2009 - ECMAScript 5.
+            - 2011 - ECMAScript 5.1.
+            - 2015 - [ECMAScript 2015 (ES6)](http://www.ecma-international.org/ecma-262/6.0/).
+            - 2016 - [ECMAScript 2016 (ES7)](http://www.ecma-international.org/ecma-262/7.0/).
+            - 20?? - ES.Next
+
+        ---
+
+        # Datatypes
+
+        - Javascript is loosly typed.
+            - Five (primitive) datatypes: `Undefined`, `Null`, `Boolean`, `Number` och `String`.
+            - One more komplex type, `Object`, unordered list with name/value couples.
+            - All values must be of one of the types above.
+        - The operator `typeof` get the type of a value as a String.
+            ```
+                typeof 42                                     // number
+                typeof 3.14                                   // number
+                typeof 'Hi hope!'                             // string
+                typeof true                                   // boolean
+                typeof {age: 42, name: 'Ellen Nu'}            // object
+                typeof function foo() { console.log('bar'); } // function
+            ```
+        .gray-text[.smaller[(__Note!__ Functions are of the type `Object`, even if the opertor `typeof` returns the string `function`.)]]
+
+        ---
+
+        # The datatype `Number`
+
+        - All Numbers are stored as 64 bit numbers;
+        - Numbers can be expressed in different ways.
+            ```
+                42      // integer
+                3.14    // float
+                4.712e7 // exponential number (4,712 ⋅ 10⁷)
+            ```
+        - Arethmetic __operators__ works as usual.
+            ```
+                23 + 19      // addition (→ 42)
+                115 - 73     // subtraction (→ 42)
+                7 * 6        // multiplication (→ 42)
+                210 / 5      // division (→ 42)
+                18 % 5       // rest (→ 3, "remainder/modulo operator")
+                4 + 2 * 7    // multiplication have higher priority than addition (→ 18)
+                (4 + 2) * 7  // parentheses have the highest priority (→ 42)
+            ```
+        - Special Numbers: `infinity`, `-infinity`, `NaN` (Not-A-Number)
+
+        ---
+
+        # The datatype `String`
+
+        - Strings represent text.
+            ```
+                'Can be written inside apostrophes.'
+                "Can be written inside quotes aswell." // NOT in this course!
+            ```
+            - The code standard in the course will prohibit the use of quotes!
+        - Strings can be concatenated .smaller[(latin: _catena_, chain, "chaining")].
+            ```
+                'You can ' + 'add strings ' + 'togheter.'
+            ```
+        - Newline character `\n`, an escape sequence, is used to create Strings spanning over several lines.
+            ```
+                'A String can be divided\nover several lines\nwithout a problem.'
+            ```
+
+        ---
+
+        # The datatype `Boolean`
+
+        - Only two values possible, `true` or `false`.
+        - Boolean values can be created with __comparisons__,
+        `<`, `>`, `<=`, `>=`, `==`, `!=`, `===` (compare type as well), `!==` (compare type as well).
+            ```
+                5 > 3 // true
+                5 < 3 // false
+                'Johan' < 'A good guy' // false, works with strings as well
+                'Johan' < 'a good guy' // true, lowercase characters are ordered before UPPERCASE
+            ```
+        - __Logical operators__ are used to reason with boolean values; AND (`&&`), OR (`||`), NOT (`!`).
+            ```
+                true && false // false
+                true || false // true
+                !false        // true
+            ```
+
+        ---
+
+        # Automatic type convertion
+
+        - If possible, automatic type conversion is used:
+            ```
+                42;      // 42
+                "4" + 2; // "42"
+                4 + "2"; // "42"
+            ```
+
+        TODO: ADD to this
+
+        .gray-text[.smaller[(Sometimes `;` can be omitted but please don´t)]]
+
+        ---
+
+        # Variabler
+
+        - Variables are defined using `let`, or `var`, followed by an identifier.
+            ```
+                let count;                    // undefined
+                count = 21;
+                var result = count * 2;
+            ```
+        - Different types can be stored in the same variable
+            ```
+                let result = 42;               // Number
+                result =  "Meaning of life";   // String
+                result = 12.3;                 // Number
+            ```
+
+        .gray-text[`var`,  _function scope_]
+
+        .gray-text[`let`,  _block scope_]
+
+        ---
+
+        # Variable names
+
+        - The following words are reserved
+
+        ```
+            break          do             in             typeof
+            case           else           instanceof     throw
+            catch          export         new            try
+            class          extends        let            var
+            const          finally        return         void
+            continue       for            static         while
+            debugger       function       super          with
+            default        if             switch         yield
+            delete         import         this
+        ```
+
+        ```
+            await          implements     package        protected
+            enum           interface      private        public
+        ```
+
+        ---
+
+        # Control flow
+
+        - Sequences
+        - Conditional statements
+           - [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else)-statement,
+           - [`switch`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch)-statement,
+           - [The conditional operator  (`?:`)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)
+        - Iterations
+           - [`while`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while)-statement,
+           - [`do...while`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/do...while)-statement,
+           - [`for`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for)-statement.
+        - Recursion
+           - Self-invoking functions
+
+        ---
+
+        # Conditional statements
+
+        - `if`-statement
+           ```
+               let number = 42;
+               if (number === 0) {
+                   console.log('The Number is 0.');
+               }
+           ```
+        - `if...else`-statement
+            ```
+               let number = 42;
+               if (number < 0) {
+                 console.log("Less than 0.");
+               } else if (number === 0) {
+                 console.log("Exactly 0");
+               } else {
+                 console.log("More than 0.");
+               }
+            ```
+
+        ---
+
+        # Conditional statements
+
+        `switch`-statement
+          ```
+            let number = 4;
+            switch (number) {
+             case 1:
+             case 2:
+             case 3:
+             case 4:
+             case 5:
+             case 6:
+               console.log(To small!");
+               break;
+             case 7:
+               console.log("That is right!");
+               break;
+             case 8:
+             case 9:
+             case 10:
+               console.log("To large!");
+               break;
+
+             default:
+               console.log(number + " is not part of the interval 1-10");
+               break;
+            }
+
+          ```
+
+
+        ---
+
+        # Conditional statements
+
+        Conditional operator
+        ```
+           let number = 42;
+           let output = 'The number is ';
+           output += number % 2 === 0 ? 'even.' : 'odd.'
+           console.log(output); // → The number is even.
+        ```
+
+        ---
+
+        # Iterations
+
+        ## `while`-statement
+
+        ```
+           let sum = 0;
+           while (sum < 500) {
+             sum += sum + 42;
+           }
+           console.log(sum); // → 630
+        ```
+
+        ## `do...while`-statement
+        ```
+           let i = 10;
+           do {
+             console.log(i + " ");
+             i += 1;
+           } while (i < 10);
+           // → 10
+        ```
+
+        ---
+        # Iterations
+
+        ## `for`-statement
+        ```
+           let output = '';
+           for (let i = 0; i < 10; i += 1) {
+             output += i + ' ';
+           }
+           console.log(output); // → 0 1 2 3 4 5 6 7 8 9
+        ```
+
+        ---
+
+        # Iterations
+
+        - `break`-statement vill cancel the loop.
+
+        ```
+           let output = '';
+
+           for (let i = 0; i < 10; i += 1) {
+             if (i === 4) {
+               break;
+             }
+             output += i + ' ';
+           }
+
+           console.log(output); // → 0 1 2 3
+        ```
+
+        - `continue`-statements cancels the active iteration and starts a new one.
+
+        ```
+           let output = '';
+
+           for (let i = 0; i < 10; i += 1) {
+             if (i % 3 === 0) {
+               continue;
+             }
+             output += i + ' ';
+           }
+
+           console.log(output); // → 1 2 4 5 7 8
+        ```
+
+        .gray-text[(`continue`is by some marked as "bad practice". Code can often be written in such a way that continue is not needed.)]
+
+        ---
+
+        # Comments
+
+        ```
+           let product = 1;
+
+           // Row comments
+           for (let i = 3; i < 100; i += 2) {
+             product *= i;
+           }
+
+           /* This is a block comment spanning
+              over many rows
+           */
+           console.log(product);
+
+           /**
+            * (Documentation comment (JSDOC).)
+            * Returns a string where all...
+            *
+            * @param {string} str  The string being...
+            * @returns {string} A new string with...
+            */
+           let foo = function(data) {
+
+             // do something with data to create some new data...
+
+             return newData;
+           };
+        ```
+
+        ---
+        # Functions
+
+        - You defines functions in the same way as variables. The value of the variable is the function.
+
+        ```
+            let sayYourNameAndAge = function(name, age) {
+                let greeting = 'Hello '+ name + '. You are ' + age + ' years old.';
+
+                return greeting;
+            };
+
+            let message = sayYourNameAndAge('Ellen', 30, 'ignored argument');
+            console.log(message); // ➡ Hello Ellen. You are 30 years old.
+        ```
+        All functions returns
+
+        ```
+          let ageUndefined = function(name, age) {
+              return age;
+          };
+
+          let returnUndefined = function() {
+
+          };
+
+          console.log(ageUndefined("Ellen")); // ➡ undefined
+
+          console.log(returnUndefined()); // ➡ undefined
+        ```
+
+        ---
+        # Default parameters
+
+        Old way
+
+        ```
+          let sayYourNameAndAge = function(name, age) {
+
+              name = name ? name : 'Noname';
+              age = age ? age : '18'; // 0 will evaluate to false!
+
+              let greeting = 'Hello '+ name + '. You are ' + age + ' years old.';
+
+              return greeting;
+          };
+
+          console.log(sayYourNameAndAge()); // ➡ Hello Ellen. You are 18 years old.
+        ```
+        ECMAScript 6 (ES2015)
+
+        ```
+          let sayYourNameAndAge = function(name = 'Noname', age = 18) {
+
+              let greeting = 'Hello '+ name + '. You are ' + age + ' years old.';
+
+              return greeting;
+          };
+
+          console.log(sayYourNameAndAge()); // ➡ Hello Ellen. You are 18 years old.
+
+        ```
+
+        ---
+        # Hoisting
+
+        Variables defined by `var` are "hoisted" to the top of the scope.
+
+        What you see:
+
+        ```
+            let theScope = function() {
+                console.log(variable); // ➡ undefined
+
+                var variable = 10;
+
+                console.log(variable); // ➡ 10
+            };
+            theScope();
+        ```
+
+        What is executed:
+
+        ```
+            let theScope = function() {
+                var variable;
+
+                console.log(variable); // ➡ undefined
+
+                variable = 10;
+
+                console.log(variable); // ➡ 10
+            };
+            theScope();
+        ```
+        Variables declared with `let` will hoist but referencing the variable before the declaration will result in a ReferenceError.
+
+        ---
+
+        # Expression vs. declaration
+
+        Function Expression:
+
+        ```
+          theScope(); // ➡ ReferenceError: theScope is not defined
+
+          let theScope = function(a = 0, b = 0) {
+              return a + b;
+          };
+        ```
+
+        Function Declaration:
+
+        ```
+          theScope();
+
+          function theScope(a = 0, b = 0) {
+              return a + b;
+          }
+        ```
+        Function declarations are hoisted in JavaScript
+
+
+        ---
+
+        # Anonymous functions
+
+        Functions that are not named are called "Anonymous functions"
+        ```
+          let creatorFunction = function() {
+            return function (){
+              return 'We Are Anonymous';
+            };
+          }
+          console.log(creatorFunction()());
+        ```
+
+        The returned, anonomys, function will still have a reference to the outer
+        functions parameter "factor"
+
+        ---
+
+        # Arrow functions
+
+        Old way:
+        ```
+          let creatorFunction = function() {
+            return function (){
+              return 'I am Anonymous'; // ➡ I am Anonymous
+            };
+          }
+          console.log(creatorFunction()());
+        ```
+        ES2015 using Arrow functions:
+        ```
+          let creatorFunction = function() {
+            return () => 'I am Anonymous';
+          }
+          console.log(creatorFunction()()); // ➡ I am Anonymous
+        ```
+
+        ---
+        # Nested scopes
+
+        ```
+          function outerScope(runFunction = 1) {
+            let result;
+
+            let firstInnerScope = function(){
+                let a = 10;
+                return a;
+            };
+
+            let secondInnerScope = function(){
+                let a = 20;
+                return a;
+            };
+
+            if(runFunction === 1){
+              result = firstInnerScope();
+            } else {
+              result = secondInnerScope();
+            }
+
+            return result;
+          };
+
+          console.log(outerScope(2)); // ➡ 20
+
+        ```
+
+        ---
+
+        # Nested scopes
+
+        Inner functions can access outer functions scopes
+
+        ```
+        let outerResult = 0;
+
+        function outerScope() {
+          let result = 0;
+
+          let firstInnerScope = function(){
+              result += 10;
+              outerResult += 1;
+          };
+
+          let secondInnerScope = function(){
+              result += 20;
+              outerResult += 1;
+          };
+
+          firstInnerScope();
+          secondInnerScope();
+
+          return result;
+        };
+
+        console.log(outerScope()); // ➡ 30
+        console.log(outerResult);  // ➡ 2
+        ```
+
+        ---
+
+        # Closure
+
+
+        ```
+          function multiplier(factor){
+            return function(number) {
+              return number * factor;
+            };
+          }
+          var twice = multiplier(2);
+          console.log(twice(5)); // ➡ 10
+        ```
+        or with arrow functions:
+
+        ```
+          function multiplier(factor){
+            return (number) => number * factor;
+          }
+          var twice = multiplier(2);
+          console.log(twice(5)); // ➡ 10
+        ```
+
+        The returned, anonymous, function will still have a reference to the outer
+        functions parameter "factor".
+
+        `multiplier` is called a ["Higher order function"](http://eloquentjavascript.net/05_higher_order.html).
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+        var slideshow = remark.create({
+            ratio: "16:9",
+            highlightLanguage: "javascript",
+//            highlightStyle: "ir-black",
+            highlightLines: true,
+            navigation: {
+                scroll: false,
+                touch: true,
+                click: false
+            }
+        });
+    </script>
+</body>
+</html>
