@@ -13,7 +13,7 @@
         class: center, middle, lnu-background-yellow
 
         ### Introduction to Web programming (1DV525)
-        # Lecture
+        # Introduction to JavaScript, pt 1
 
         <div class="lnu-footer">
             <img src="../remark/images/lnu-logotype.png">
@@ -21,46 +21,38 @@
         </div>
 
         ---
-
         class: lnu-background-cc
 
-        ### Upphovsrätt för detta verk
+        ### Licence for this work
 
-        Detta verk är framtaget av Mats Loock i anslutning till kursen Grundläggande programmering (1DV021) vid Linnéuniversitetet.
+        This work is produced by Johan Leitet for the course Introduction to web programming (1DV525) at Linnaeus University.
 
-        Allt innehåll i detta verk förutom fotografier, ikoner, bild på kurslitteraturen samt Linnéuniversitetets logotyp och symbol,
-        är licensierad under en <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+        All content in this work excluding photographs, icons, picture of course litterature and Linnaeus University logotype and symbol, is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
             <img alt="Creative Commons-licens" style="border-width:0;vertical-align:middle" src="https://i.creativecommons.org/l/by/4.0/80x15.png" />
-            Creative Commons Erkännande 4.0 Internationell Licens
-        </a>.
-        #### Du får använda detta verk så här
-        - kopiera hela eller delar av innehållet
-        - sprida hela eller delar av innehållet
-        - visa hela eller delar av innehållet offentligt och digitalt
-        - konvertera innehållet till annat format
-        - du får även göra om innehållet
+            Creative Commons Attribution 4.0 International License.
+        </a>
+        #### You are free to
+        - copy and redistribute the material in any medium or format
+        - spread the whole or parts of the content
+        - show the whole or parts of the content publicly and digital
+        - convert the content to another format
+        - change the content
 
-        Om du förändrar innehållet så ta inte med fotografier, ikoner, bild på kurslitteraturen samt Linnéuniversitetets logotyp och symbol i din nya version!
+        If you change the content do not use the photographs, icons, picture of the course literature or Linnaeus University logotype and symbol in your new work!
 
-        Vid all användning måste du ange källan: ”Linnéuniversitetet – Grundläggande programmering (1DV021)” och
-        en länk till https://coursepress.lnu.se/kurs/grundlaggande-programmering och till Creative Common-licensen här ovan.
-
+        At all times you must give credit to: ”Linnaeus university – Introduction to Web Programming (1DV525)” with the link https://coursepress.lnu.se/kurs/introduction-to-web-programming/ and to the Creative Common-license above.
         ---
 
         # JavaScript
-
+        ![](../images/javascript.gif)
 
         ---
 
         # History
 
-        - Varför?
-            - Innan mitten av 1990-talet kunde webbformulär bara valideras på servern vilket tog tid (~30 s) då 28.8 kbps modem användes.
-            - Ett skriptspråk, inbäddat i webbläsare, behövdes för snabbare(!) och enklare(?) validering av data.
-        - När?
+        - Timeline
             - 1995 - JavaScript 1.0 med Netscape Navigator 2.
             - 1997 - JavaScript 1.1 standardiseras till ECMAScript 1.
-                - Bekriver syntax, typer, satser, nyckelord, reserverade ord, operatorer och objekt.
             - 1998 - ECMAScript 2.
             - 1999 - ECMAScript 3.
             - 2009 - ECMAScript 5.
@@ -77,14 +69,17 @@
             - Five (primitive) datatypes: `Undefined`, `Null`, `Boolean`, `Number` och `String`.
             - One more komplex type, `Object`, unordered list with name/value couples.
             - All values must be of one of the types above.
-        - The operator `typeof` get the type of a value as a String.
+        - The operator `typeof` gets the type of a value as a String.
             ```
                 typeof 42                                     // number
                 typeof 3.14                                   // number
                 typeof 'Hi hope!'                             // string
                 typeof true                                   // boolean
-                typeof {age: 42, name: 'Ellen Nu'}            // object
                 typeof function foo() { console.log('bar'); } // function
+                typeof (() => {})                             // function
+                typeof {age: 42, name: 'Ellen Nu'}            // object
+                typeof [1, 4, 1, 4, 2]                        // object
+
             ```
         .gray-text[.smaller[(__Note!__ Functions are of the type `Object`, even if the opertor `typeof` returns the string `function`.)]]
 
@@ -105,7 +100,7 @@
                 115 - 73     // subtraction (→ 42)
                 7 * 6        // multiplication (→ 42)
                 210 / 5      // division (→ 42)
-                18 % 5       // rest (→ 3, "remainder/modulo operator")
+                18 % 5       // rest (→ 3, "remainder operator")
                 4 + 2 * 7    // multiplication have higher priority than addition (→ 18)
                 (4 + 2) * 7  // parentheses have the highest priority (→ 42)
             ```
@@ -169,7 +164,7 @@
 
         # Variabler
 
-        - Variables are defined using `let`, or `var`, followed by an identifier.
+        - Variables are defined using `let`, `const` or `var`, followed by an identifier.
             ```
                 let count;                    // undefined
                 count = 21;
@@ -185,6 +180,8 @@
         .gray-text[`var`,  _function scope_]
 
         .gray-text[`let`,  _block scope_]
+
+        .gray-text[`const`,  _identifier can not be reassigned_]
 
         ---
 
@@ -648,9 +645,46 @@
         functions parameter "factor".
 
         `multiplier` is called a ["Higher order function"](http://eloquentjavascript.net/05_higher_order.html).
+        ---
+        # Regular Expressions
 
+        ```
+          let regexp = /(\w+)\s(\w+)/;
+          let str = "John Smith";
+          let newstr = str.replace(regexp, "$2, $1");
+          console.log(newstr);
+        ```
 
+        [MDN Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
 
+        ---
+
+        ---
+        # Error
+
+        ```
+          try {
+             throw new Error('My error 123');
+          } catch (error) {
+             console.log("Error:", error.message);
+          }
+          finally {
+             console.log("Always");
+          }
+
+        ```
+        ---
+        # To finish off...
+
+        ```
+          let nbr1    = 42;
+          let str     = '';
+          let bool    = true;
+          let func    = () => {};
+          let regexp  = / /;
+          let arr     = [];
+          let obj     = {};
+        ```
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
     </script>
