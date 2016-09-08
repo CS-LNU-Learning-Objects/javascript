@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Lecture - JavaScript</title>
@@ -68,7 +68,7 @@
         ```
           let courseCode = ['1DV525', '1DV523', '1DV021'];
 
-          courseCode.forEach((node) => {console.log(node);}); // ➡ 1DV525 ➡ 1DV523 ➡ 1DV021
+          courseCode.forEach((node) => console.log(node)); // ➡ 1DV525 ➡ 1DV523 ➡ 1DV021 
         ```
         filter
         ```
@@ -169,7 +169,7 @@
           students.push(createStudent('Ellen', 30));
           students.push(createStudent('Peter', 32));
 
-          students.forEach((student) => {student.greet();});
+          students.forEach((student) => student.greet());
         ```
         ---
         # *Constructor* pattern
@@ -190,7 +190,7 @@
           students.push(new Student('Peter', 32));
           students.push(new Student('Ellen', 30));
 
-          students.forEach((student) => {student.greet();});
+          students.forEach((student) => student.greet());
 
           console.log(students[0].constructor); // ➡ [Function: Student]
 
@@ -212,7 +212,7 @@
           students.push(new Student('Peter', 32));
           students.push(new Student('Ellen', 30));
 
-          students.forEach((student) => {student.greet();});
+          students.forEach((student) => student.greet());
 
         ```
 
@@ -253,7 +253,7 @@
 
           students[0].name = "Foo";
 
-          students.forEach((student) => {student.greet();});
+          students.forEach((student) => student.greet());
 
         ````
 
