@@ -59,7 +59,8 @@
             - 2011 - ECMAScript 5.1.
             - 2015 - [ECMAScript 2015 (ES6)](http://www.ecma-international.org/ecma-262/6.0/).
             - 2016 - [ECMAScript 2016 (ES7)](http://www.ecma-international.org/ecma-262/7.0/).
-            - 20?? - ES.Next
+            - 2017 - [ECMAScript 2017 (ES8)](http://www.ecma-international.org/ecma-262/8.0/).
+            - 2018 - ES9
 
         ---
 
@@ -67,7 +68,7 @@
 
         - Javascript is loosly typed.
             - Five (primitive) datatypes: `Undefined`, `Null`, `Boolean`, `Number` och `String`.
-            - One more komplex type, `Object`, unordered list with name/value couples.
+            - One more complex type, `Object`, unordered list with name/value couples.
             - All values must be of one of the types above.
         - The operator `typeof` gets the type of a value as a String.
             ```
@@ -152,26 +153,24 @@
         - If possible, automatic type conversion is used:
             ```
                 42;      // 42
-                "4" + 2; // "42"
-                4 + "2"; // "42"
+                '4' + 2 // "42"
+                4 + '2' // "42"
             ```
-        .gray-text[.smaller[(Sometimes `;` can be omitted but please don´t, or [should you?](https://youtu.be/Qlr-FGbhKaI) )]]
-
         ---
 
         # Variabler
 
         - Variables are defined using `let`, `const` or `var`, followed by an identifier.
             ```
-                let count;                    // undefined
-                count = 21;
-                var result = count * 2;
+                let count                    // undefined
+                count = 21
+                var result = count * 2
             ```
         - Different types can be stored in the same variable
             ```
-                let result = 42;               // Number
-                result =  "Meaning of life";   // String
-                result = 12.3;                 // Number
+                let result = 42               // Number
+                result =  'Meaning of life'   // String
+                result = 12.3                 // Number
             ```
 
         .gray-text[`var`,  _function scope_]
@@ -225,20 +224,20 @@
 
         - `if`-statement
            ```
-               let number = 42;
+               let number = 42
                if (number === 0) {
-                   console.log('The Number is 0.');
+                   console.log('The Number is 0.')
                }
            ```
         - `if...else`-statement
             ```
-               let number = 42;
+               let number = 42
                if (number < 0) {
-                 console.log("Less than 0.");
+                 console.log("Less than 0.")
                } else if (number === 0) {
-                 console.log("Exactly 0");
+                 console.log("Exactly 0")
                } else {
-                 console.log("More than 0.");
+                 console.log("More than 0.")
                }
             ```
 
@@ -248,7 +247,7 @@
 
         `switch`-statement
           ```
-            let number = 4;
+            let number = 4
             switch (number) {
              case 1:
              case 2:
@@ -256,20 +255,20 @@
              case 4:
              case 5:
              case 6:
-               console.log(To small!");
-               break;
+               console.log(To small!")
+               break
              case 7:
-               console.log("That is right!");
-               break;
+               console.log("That is right!")
+               break
              case 8:
              case 9:
              case 10:
-               console.log("To large!");
-               break;
+               console.log("To large!")
+               break
 
              default:
-               console.log(number + " is not part of the interval 1-10");
-               break;
+               console.log(number + " is not part of the interval 1-10")
+               break
             }
 
           ```
@@ -281,10 +280,10 @@
 
         Conditional operator
         ```
-           let number = 42;
-           let output = 'The number is ';
+           let number = 42
+           let output = 'The number is '
            output += number % 2 === 0 ? 'even.' : 'odd.'
-           console.log(output); // → The number is even.
+           console.log(output) // → The number is even.
         ```
 
         ---
@@ -294,20 +293,20 @@
         ## `while`-statement
 
         ```
-           let sum = 0;
+           let sum = 0
            while (sum < 500) {
-             sum += sum + 42;
+             sum += sum + 42
            }
-           console.log(sum); // → 630
+           console.log(sum) // → 630
         ```
 
         ## `do...while`-statement
         ```
-           let i = 10;
+           let i = 10
            do {
-             console.log(i + " ");
-             i += 1;
-           } while (i < 10);
+             console.log(i + " ")
+             i += 1
+           } while (i < 10)
            // → 10
         ```
 
@@ -316,11 +315,11 @@
 
         ## `for`-statement
         ```
-           let output = '';
+           let output = ''
            for (let i = 0; i < 10; i += 1) {
-             output += i + ' ';
+             output += i + ' '
            }
-           console.log(output); // → 0 1 2 3 4 5 6 7 8 9
+           console.log(output) // → 0 1 2 3 4 5 6 7 8 9
         ```
 
         ---
@@ -330,31 +329,31 @@
         - `break`-statement vill cancel the loop.
 
         ```
-           let output = '';
+           let output = ''
 
            for (let i = 0; i < 10; i += 1) {
              if (i === 4) {
-               break;
+               break
              }
-             output += i + ' ';
+             output += i + ' '
            }
 
-           console.log(output); // → 0 1 2 3
+           console.log(output) // → 0 1 2 3
         ```
 
         - `continue`-statements cancels the active iteration and starts a new one.
 
         ```
-           let output = '';
+           let output = ''
 
            for (let i = 0; i < 10; i += 1) {
              if (i % 3 === 0) {
-               continue;
+               continue
              }
-             output += i + ' ';
+             output += i + ' '
            }
 
-           console.log(output); // → 1 2 4 5 7 8
+           console.log(output) // → 1 2 4 5 7 8
         ```
 
         .gray-text[(`continue`is by some marked as "bad practice". Code can often be written in such a way that continue is not needed.)]
@@ -364,17 +363,17 @@
         # Comments
 
         ```
-           let product = 1;
+           let product = 1
 
            // Row comments
            for (let i = 3; i < 100; i += 2) {
-             product *= i;
+             product *= i
            }
 
            /* This is a block comment spanning
               over many rows
            */
-           console.log(product);
+           console.log(product)
 
            /**
             * (Documentation comment (JSDOC).)
@@ -387,8 +386,8 @@
 
              // do something with data to create some new data...
 
-             return newData;
-           };
+             return newData
+           }
         ```
 
         ---
@@ -397,29 +396,29 @@
         - You defines functions in the same way as variables. The value of the variable is the function.
 
         ```
-            let sayYourNameAndAge = function(name, age) {
-                let greeting = 'Hello '+ name + '. You are ' + age + ' years old.';
+            const sayYourNameAndAge = function(name, age) {
+                let greeting = 'Hello '+ name + '. You are ' + age + ' years old.'
 
-                return greeting;
-            };
+                return greeting
+            }
 
-            let message = sayYourNameAndAge('Ellen', 30, 'ignored argument');
-            console.log(message); // ➡ Hello Ellen. You are 30 years old.
+            let message = sayYourNameAndAge('Ellen', 30, 'ignored argument')
+            console.log(message) // ➡ Hello Ellen. You are 30 years old.
         ```
         All functions returns
 
         ```
-          let ageUndefined = function(name, age) {
-              return age;
+          const ageUndefined = function(name, age) {
+              return age
           };
 
-          let returnUndefined = function() {
+          const returnUndefined = function() {
 
-          };
+          }
 
-          console.log(ageUndefined("Ellen")); // ➡ undefined
+          console.log(ageUndefined("Ellen")) // ➡ undefined
 
-          console.log(returnUndefined()); // ➡ undefined
+          console.log(returnUndefined()) // ➡ undefined
         ```
 
         ---
@@ -428,29 +427,29 @@
         Old way
 
         ```
-          let sayYourNameAndAge = function(name, age) {
+          const sayYourNameAndAge = function(name, age) {
 
-              name = name ? name : 'Noname';
-              age = age ? age : '18'; // 0 will evaluate to false!
+              name = name ? name : 'Noname'
+              age = age ? age : '18' // 0 will evaluate to false!
 
-              let greeting = 'Hello '+ name + '. You are ' + age + ' years old.';
+              let greeting = 'Hello '+ name + '. You are ' + age + ' years old.'
 
-              return greeting;
-          };
+              return greeting
+          }
 
           console.log(sayYourNameAndAge()); // ➡ Hello Ellen. You are 18 years old.
         ```
         ECMAScript 6 (ES2015)
 
         ```
-          let sayYourNameAndAge = function(name = 'Noname', age = 18) {
+          const sayYourNameAndAge = function(name = 'Noname', age = 18) {
 
-              let greeting = 'Hello '+ name + '. You are ' + age + ' years old.';
+              let greeting = 'Hello '+ name + '. You are ' + age + ' years old.'
 
-              return greeting;
-          };
+              return greeting
+          }
 
-          console.log(sayYourNameAndAge()); // ➡ Hello Ellen. You are 18 years old.
+          console.log(sayYourNameAndAge()) // ➡ Hello Ellen. You are 18 years old.
 
         ```
 
@@ -462,29 +461,29 @@
         What you see:
 
         ```
-            let theScope = function() {
-                console.log(variable); // ➡ undefined
+            const theScope = function() {
+                console.log(variable) // ➡ undefined
 
-                var variable = 10;
+                var variable = 10
 
-                console.log(variable); // ➡ 10
-            };
+                console.log(variable) // ➡ 10
+            }
             theScope();
         ```
 
         What is executed:
 
         ```
-            let theScope = function() {
-                var variable;
+            const theScope = function() {
+                var variable
 
-                console.log(variable); // ➡ undefined
+                console.log(variable) // ➡ undefined
 
-                variable = 10;
+                variable = 10
 
-                console.log(variable); // ➡ 10
-            };
-            theScope();
+                console.log(variable) // ➡ 10
+            }
+            theScope()
         ```
         Variables declared with `let` will hoist but referencing the variable before the declaration will result in a ReferenceError.
 
@@ -495,20 +494,20 @@
         Function Expression:
 
         ```
-          theScope(); // ➡ ReferenceError: theScope is not defined
+          theScope() // ➡ ReferenceError: theScope is not defined
 
-          let theScope = function(a = 0, b = 0) {
-              return a + b;
-          };
+          const theScope = function(a = 0, b = 0) {
+              return a + b
+          }
         ```
 
         Function Declaration:
 
         ```
-          theScope();
+          theScope()
 
           function theScope(a = 0, b = 0) {
-              return a + b;
+              return a + b
           }
         ```
         Function declarations are hoisted in JavaScript
@@ -520,12 +519,12 @@
 
         Functions that are not named are called "Anonymous functions"
         ```
-          let creatorFunction = function() {
+          const creatorFunction = function() {
             return function (){
-              return 'We Are Anonymous';
-            };
+              return 'We Are Anonymous'
+            }
           }
-          console.log(creatorFunction()());
+          console.log(creatorFunction()())
         ```
 
         The returned, anonomys, function will still have a reference to the outer
@@ -537,19 +536,19 @@
 
         Old way:
         ```
-          let creatorFunction = function() {
+          const creatorFunction = function() {
             return function (){
-              return 'I am Anonymous'; // ➡ I am Anonymous
-            };
+              return 'I am Anonymous' // ➡ I am Anonymous
+            }
           }
-          console.log(creatorFunction()());
+          console.log(creatorFunction()())
         ```
         ES2015 using Arrow functions:
         ```
           let creatorFunction = function() {
-            return () => 'I am Anonymous';
+            return () => 'I am Anonymous'
           }
-          console.log(creatorFunction()()); // ➡ I am Anonymous
+          console.log(creatorFunction()()) // ➡ I am Anonymous
         ```
 
         ---
@@ -557,28 +556,28 @@
 
         ```
           function outerScope(runFunction = 1) {
-            let result;
+            let result
 
-            let firstInnerScope = function(){
-                let a = 10;
-                return a;
+            const firstInnerScope = function(){
+                let a = 10
+                return a
             };
 
-            let secondInnerScope = function(){
-                let a = 20;
-                return a;
+            const secondInnerScope = function(){
+                let a = 20
+                return a
             };
 
             if(runFunction === 1){
-              result = firstInnerScope();
+              result = firstInnerScope()
             } else {
-              result = secondInnerScope();
+              result = secondInnerScope()
             }
 
-            return result;
+            return result
           };
 
-          console.log(outerScope(2)); // ➡ 20
+          console.log(outerScope(2)) // ➡ 20
 
         ```
 
@@ -589,29 +588,29 @@
         Inner functions can access outer functions scopes
 
         ```
-        let outerResult = 0;
+        let outerResult = 0
 
         function outerScope() {
-          let result = 0;
+          let result = 0
 
-          let firstInnerScope = function(){
-              result += 10;
-              outerResult += 1;
+          const firstInnerScope = function(){
+              result += 10
+              outerResult += 1
           };
 
-          let secondInnerScope = function(){
-              result += 20;
-              outerResult += 1;
+          const secondInnerScope = function(){
+              result += 20
+              outerResult += 1
           };
 
-          firstInnerScope();
-          secondInnerScope();
+          firstInnerScope()
+          secondInnerScope()
 
-          return result;
+          return result
         };
 
-        console.log(outerScope()); // ➡ 30
-        console.log(outerResult);  // ➡ 2
+        console.log(outerScope()) // ➡ 30
+        console.log(outerResult)  // ➡ 2
         ```
 
         ---
@@ -622,20 +621,20 @@
         ```
           function multiplier(factor){
             return function(number) {
-              return number * factor;
-            };
+              return number * factor
+            }
           }
-          var twice = multiplier(2);
-          console.log(twice(5)); // ➡ 10
+          let twice = multiplier(2)
+          console.log(twice(5)) // ➡ 10
         ```
         or with arrow functions:
 
         ```
           function multiplier(factor){
-            return (number) => number * factor;
+            return (number) => number * factor
           }
-          var twice = multiplier(2);
-          console.log(twice(5)); // ➡ 10
+          let twice = multiplier(2)
+          console.log(twice(5)) // ➡ 10
         ```
 
         The returned, anonymous, function will still have a reference to the outer
@@ -646,10 +645,10 @@
         # Regular Expressions
 
         ```
-          let regexp = /(\w+)\s(\w+)/;
-          let str = "John Smith";
-          let newstr = str.replace(regexp, "$2, $1");
-          console.log(newstr);
+          let regexp = /(\w+)\s(\w+)/
+          let str = "John Smith"
+          let newstr = str.replace(regexp, "$2, $1")
+          console.log(newstr)
         ```
 
         [MDN Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
@@ -660,12 +659,12 @@
 
         ```
           try {
-             throw new Error('My error 123');
+             throw new Error('My error 123')
           } catch (error) {
-             console.log("Error:", error.message);
+             console.log("Error:", error.message)
           }
           finally {
-             console.log("Always");
+             console.log("Always")
           }
 
         ```
@@ -673,13 +672,13 @@
         # To finish off...
 
         ```
-          let nbr1    = 42;
-          let str     = '';
-          let bool    = true;
-          let func    = () => {};
-          let regexp  = / /;
-          let arr     = [];
-          let obj     = {};
+          let nbr1    = 42
+          let str     = ''
+          let bool    = true
+          let func    = () => {}
+          let regexp  = / /
+          let arr     = []
+          let obj     = {}
         ```
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
