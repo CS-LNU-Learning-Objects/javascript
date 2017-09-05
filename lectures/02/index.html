@@ -51,11 +51,11 @@
         # Arrays
 
         ```
-        const courseCodes = ['1DV525', '1DV523', '1DV021'];
+        const courseCodes = ['1DV525', '1DV523', '1DV021']
 
-        courseCodes.push('1DV022');
+        courseCodes.push('1DV022')
 
-        console.log(courseCodes.length); // ➡ 4
+        console.log(courseCodes.length) // ➡ 4
 
         ```
 
@@ -66,17 +66,17 @@
 
         forEach
         ```
-          let courseCode = ['1DV525', '1DV523', '1DV021'];
+          let courseCode = ['1DV525', '1DV523', '1DV021']
 
-          courseCode.forEach((node) => {console.log(node);}); // ➡ 1DV525 ➡ 1DV523 ➡ 1DV021
+          courseCode.forEach((node) => {console.log(node)}) // ➡ 1DV525 ➡ 1DV523 ➡ 1DV021
         ```
         filter
         ```
-        const courseCodes = ['1DV525', '1DV523', '1DV021'];
+        const courseCodes = ['1DV525', '1DV523', '1DV021']
 
-        const intCourses = courseCodes.filter((node) => node.charAt(3) === '5' );
+        const intCourses = courseCodes.filter((node) => node.charAt(3) === '5' )
 
-        console.log(intCourses); // ➡ [ '1DV525', '1DV523' ]
+        console.log(intCourses) // ➡ [ '1DV525', '1DV523' ]
 
         ```
         * [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
@@ -89,22 +89,22 @@
 
         ```
           const registerStudent = function(name, age, ...courses){
-            console.log(courses);
+            console.log(courses)
           }
 
-          registerStudent('Ellen', 30, '1DV525', '1DV523', '1DV021');
+          registerStudent('Ellen', 30, '1DV525', '1DV523', '1DV021')
 
-          const courses = ['1DV525', '1DV523', '1DV021', '2DV022'];
+          const courses = ['1DV525', '1DV523', '1DV021', '2DV022']
 
-          registerStudent('Ellen', 30, ...courses);
+          registerStudent('Ellen', 30, ...courses)
         ```
 
         Ex. Find highest number
         ```
           // Math.max syntax: Math.max([value1[, value2[, ...]]])
-          const numbers = [2, 5, 2, 5, 10, 3, 1, 5, 7, 8, 3 ,1];
+          const numbers = [2, 5, 2, 5, 10, 3, 1, 5, 7, 8, 3 ,1]
 
-          console.log(Math.max(...numbers)); // ➡ 10
+          console.log(Math.max(...numbers)) // ➡ 10
         ```
 
 
@@ -112,8 +112,8 @@
         # Objects
 
         ```
-          const objectLiteral = {};
-          console.log(typeof objectLiteral); // ➡ object
+          const objectLiteral = {}
+          console.log(typeof objectLiteral) // ➡ object
         ```
 
         With properties and methods
@@ -123,14 +123,14 @@
             age  : 30,
 
             greet: function() {
-              console.log(this.name + ' is greeting you!');
+              console.log(this.name + ' is greeting you!')
             }
-          };
+          }
 
-          student.city = "Växjö";
-          student['registered'] = true;
+          student.city = "Växjö"
+          student['registered'] = true
 
-          student.greet(); // ➡ Ellen is greeting you!
+          student.greet() // ➡ Ellen is greeting you!
         ```
         ---
         # Example
@@ -140,7 +140,7 @@
             { code: '1DV607', students: 104, type: 'campus', url: 'https://github.com/1dv607' },
             { code: '1DV607', students: 67, type: 'distance', url: 'https://coursepress.lnu.se/1dv021'},
             { code: '1DV523', students: 35, type: 'distance', url: 'https://github.com/1dv021' }
-          ];
+          ]
         ```
 
         Problem:
@@ -160,39 +160,39 @@
               age  : age,
 
               greet: function(){
-                console.log(this.name + ' is greeting you!');
+                console.log(this.name + ' is greeting you!')
               }
-            };
+            }
           }
 
-          const students = [];
-          students.push(createStudent('Ellen', 30));
-          students.push(createStudent('Peter', 32));
+          const students = []
+          students.push(createStudent('Ellen', 30))
+          students.push(createStudent('Peter', 32))
 
-          students.forEach((student) => {student.greet();});
+          students.forEach( (student) => {student.greet()})
         ```
         ---
         # *Constructor* pattern
 
         ```
           function Student(name, age) {
-            this.name = name;
-            this.age = age;
+            this.name = name
+            this.age = age
 
             this.greet = function(){
-              console.log(this.name + ' is greeting you!');
-            };
+              console.log(this.name + ' is greeting you!')
+            }
 
-            return this; //Default when called with new
+            return this //Default when called with new
           }
 
-          const students = [];
-          students.push(new Student('Peter', 32));
-          students.push(new Student('Ellen', 30));
+          const students = []
+          students.push(new Student('Peter', 32))
+          students.push(new Student('Ellen', 30))
 
-          students.forEach((student) => {student.greet();});
+          students.forEach((student) => {student.greet()})
 
-          console.log(students[0].constructor); // ➡ [Function: Student]
+          console.log(students[0].constructor) // ➡ [Function: Student]
 
         ```
         ---
@@ -200,19 +200,19 @@
 
         ```
           function Student(name, age) {
-            this.name = name;
-            this.age = age;
+            this.name = name
+            this.age = age
           }
 
           Student.prototype.greet = function(){
-            console.log(this.name + ' is greeting you!');
-          };
+            console.log(this.name + ' is greeting you!')
+          }
 
-          const students = [];
-          students.push(new Student('Peter', 32));
-          students.push(new Student('Ellen', 30));
+          const students = []
+          students.push(new Student('Peter', 32))
+          students.push(new Student('Ellen', 30))
 
-          students.forEach((student) => {student.greet();});
+          students.forEach((student) => {student.greet()})
 
         ```
 
@@ -227,10 +227,10 @@
         let person = {
           name: "N.N",
           age: 17,
-          greet: function() {console.log(this.name, 'says hi!');}
-        };
+          greet: function() {console.log(this.name, 'says hi!')}
+        }
 
-        let student = Object.create(person);
+        let student = Object.create(person)
         ```
         Students will be a new object with person as prototype.
 
@@ -239,21 +239,21 @@
         # "Public" / "Private"
         ```
           function Student(name, age) { // "Private"
-            this.name = name; // "Public"
-            this.age = age; // "Public"
+            this.name = name // "Public"
+            this.age = age // "Public"
           }
 
           Student.prototype.greet = function(){ // "Public"
-            console.log(this.name + ' is greeting you!');
-          };
+            console.log(this.name + ' is greeting you!')
+          }
 
-          const students = [];
-          students.push(new Student('Peter', 32));
-          students.push(new Student('Ellen', 30));
+          const students = []
+          students.push(new Student('Peter', 32))
+          students.push(new Student('Ellen', 30))
 
-          students[0].name = "Foo";
+          students[0].name = "Foo"
 
-          students.forEach((student) => {student.greet();});
+          students.forEach((student) => {student.greet()})
 
         ````
 
@@ -264,24 +264,24 @@
 
             this.setName = function(_name){
               // Do fancy validation here
-              name = _name;
-            };
+              name = _name
+            }
 
             this.getName = function(){
-              return name;
-            };
-            this.setName(name);
+              return name
+            }
+            this.setName(name)
           }
 
           Student.prototype.greet = function(){
-            console.log(this.getName() + ' is greeting you!');
+            console.log(this.getName() + ' is greeting you!')
           };
 
-          const students = [];
-          students.push(new Student('Peter', 32));
-          students.push(new Student('Ellen', 30));
+          const students = []
+          students.push(new Student('Peter', 32))
+          students.push(new Student('Ellen', 30))
 
-          students.forEach((student) => {student.greet();});
+          students.forEach((student) => {student.greet()})
         ````
         However... there is a better way of doing this...
 
@@ -291,26 +291,26 @@
           function Student(name) {
             Object.defineProperty(this, "name", {
               get: function(){
-                return name;
+                return name
               },
               set: function(value) {
                 // Fancy validation here
-                name = '--'+value+'--';
+                name = '--'+value+'--'
               }
-            });
+            })
 
-            this.name = name; // Don´t forget
+            this.name = name // Don´t forget
           }
 
           Student.prototype.greet = function(){
-            console.log(this.name + ' is greeting you!');
-          };
+            console.log(this.name + ' is greeting you!')
+          }
 
-          const students = [];
-          students.push(new Student('Peter', 32));
-          students.push(new Student('Ellen', 30));
+          const students = []
+          students.push(new Student('Peter', 32))
+          students.push(new Student('Ellen', 30))
 
-          students.forEach((student) => {student.greet();});
+          students.forEach((student) => {student.greet()})
         ````
         ---
 
@@ -320,29 +320,29 @@
           class Student {
 
             constructor(name) {
-              this.name = name; // Will call the setter
+              this.name = name // Will call the setter
             }
 
             greet(){ // Prototype function
-              console.log(this.name + ' is greeting you!');
+              console.log(this.name + ' is greeting you!')
             }
 
             get name(){ // Shortcut to defineProperty
-              return this._name;
+              return this._name
             }
 
             set name(value) { // Shortcut to defineProperty
-              this._name = '--'+value+'--';
+              this._name = '--'+value+'--'
             }
           }
 
-          const students = [];
-          students.push(new Student('Peter', 32));
-          students.push(new Student('Ellen', 30));
+          const students = []
+          students.push(new Student('Peter', 32))
+          students.push(new Student('Ellen', 30))
 
-          students[0].name = "Johan";
+          students[0].name = "Johan"
 
-          students.forEach((student) => {student.greet();});
+          students.forEach((student) => {student.greet()})
 
         ```
         ---
@@ -351,25 +351,25 @@
         ```
           class Polygon {
             constructor(height, width) {
-              this.height = height;
-              this.width = width;
+              this.height = height
+              this.width = width
             }
           }
 
           class Square extends Polygon {
             constructor(sideLength) {
-              super(sideLength, sideLength);
+              super(sideLength, sideLength)
             }
             get area() {
-              return this.height * this.width;
+              return this.height * this.width
             }
             set sideLength(newLength) {
-              this.height = newLength;
-              this.width = newLength;
+              this.height = newLength
+              this.width = newLength
             }
           }
 
-          var square = new Square(2);
+          var square = new Square(2)
           ```
         ---
 
@@ -378,30 +378,30 @@
         ```
         const supervisor = (state) => ({
           supervise: (student) => {console.log(state.name + ' is supervising ' + student.name + '...')}
-        });
+        })
 
         const examinate = (student) => {
           console.log('Examinating ' + student.name + '...');
-        };
+        }
 
 
         const student = (name = 'N.N', age = '18') => {
           let state = {
             name,
             age
-          };
+          }
 
           return Object.assign(
             state,
             supervisor(state)
 
-          );
-        };
+          )
+        }
 
-        var mj222sa = student("Nils");
+        var mj222sa = student("Nils")
 
-        var el222sa = student("Ellen");
-        el222sa.supervise(mj222sa);
+        var el222sa = student("Ellen")
+        el222sa.supervise(mj222sa)
         ```
 
         ---
@@ -410,15 +410,15 @@
 
         greetings.js
         ```
-          module.exports.sayHelloInEnglish = () => "Hello";
-          module.exports.sayHelloInSpanish = () => "Hola";
-          module.exports.sayHelloInSwedish = () => "Hej";
+          module.exports.sayHelloInEnglish = () => "Hello"
+          module.exports.sayHelloInSpanish = () => "Hola"
+          module.exports.sayHelloInSwedish = () => "Hej"
         ```
         app.js
         ```
-        var greet = require('./greetings');
+        var greet = require('./greetings')
 
-        console.log(greet.sayHelloInSpanish()); // ➡ Hola
+        console.log(greet.sayHelloInSpanish()) // ➡ Hola
         ```
         ---
 
@@ -429,29 +429,29 @@
           class Student {
 
             constructor(name) {
-              this.name = name;
+              this.name = name
             }
 
             greet() {
-              console.log(this.name + ' is greeting you!');
+              console.log(this.name + ' is greeting you!')
             }
 
             get name() {
-              return this._name;
+              return this._name
             }
 
             set name(value) {
-              this._name = '--'+value+'--';
+              this._name = '--'+value+'--'
             }
           }
 
-          module.exports = Student;
+          module.exports = Student
         ```
         app.js
         ```
-          var Student = require('./Student');
+          var Student = require('./Student')
 
-          console.log(new Student('Ellen', 32));
+          console.log(new Student('Ellen', 32))
         ```
         ---
 
