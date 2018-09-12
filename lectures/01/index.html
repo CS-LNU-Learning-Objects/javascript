@@ -153,12 +153,12 @@
         - If possible, automatic type conversion is used:
             ```
                 42;      // 42
-                '4' + 2 // "42"
-                4 + '2' // "42"
+                '4' + 3 + 2 // "432"
+                4 + 3 + '2' // "72"
             ```
         ---
 
-        # Variabler
+        # Variables
 
         - Variables are defined using `let`, `const` or `var`, followed by an identifier.
             ```
@@ -278,7 +278,7 @@
 
         # Conditional statements
 
-        Conditional operator
+        Conditional operator (ternery operator)
         ```
            let number = 42
            let output = 'The number is '
@@ -316,9 +316,11 @@
         ## `for`-statement
         ```
            let output = ''
+
            for (let i = 0; i < 10; i += 1) {
              output += i + ' '
            }
+
            console.log(output) // → 0 1 2 3 4 5 6 7 8 9
         ```
 
@@ -356,7 +358,7 @@
            console.log(output) // → 1 2 4 5 7 8
         ```
 
-        .gray-text[(`continue`is by some marked as "bad practice". Code can often be written in such a way that continue is not needed.)]
+        .gray-text[(`continue` is by some marked as "bad practice". Code can often be written in such a way that continue is not needed.)]
 
         ---
 

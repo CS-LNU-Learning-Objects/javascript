@@ -1,3 +1,3 @@
-"use strict";
+var hello = require('./hello')
 
-// You can run this file by writing ´node run.js´ in a bash-terminal.
+hello.hello.a()
